@@ -18,12 +18,12 @@ app.get('/', (req, res)=> {
     res.render('index')
 })
 app.get('/about', (req, res)=> {
-    res.render('index')
+    res.render('about')
 })
 
 app.post('/posts/new', (req, res)=> {
     console.log(req.body)
-    res.end()
+    res.json(req.body)
 })
 
 
