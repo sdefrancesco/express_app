@@ -23,12 +23,17 @@ app.get('/about', (req, res)=> {
 
 app.post('/posts/new', (req, res)=> {
     console.log(req.body)
-    res.send('Success', req.body)
+    res.send('Success')
 })
 
 app.get('/download', (req, res)=> {
     console.log('download')
     res.download('./public/images/city.jpg')
+})
+
+app.get('/download/:filename', (req, res)=> {
+    console.log('download')
+    res.download(`/public/images/${filename}.jpg`)
 })
 
 
