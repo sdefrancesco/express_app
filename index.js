@@ -1,10 +1,17 @@
 const express = require('express')
 const path = require('path');
+const bodyParser = require('body-parser')
+
 const app = express()
 
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'))
+
+app.use(express.static('public'))
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 
 app.get('/', (req, res)=> {
@@ -12,6 +19,11 @@ app.get('/', (req, res)=> {
 })
 app.get('/about', (req, res)=> {
     res.render('index')
+})
+
+app.post('/posts/new', (req, res)=> {
+    console.log(req.body)
+    res.end()
 })
 
 
